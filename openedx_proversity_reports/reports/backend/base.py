@@ -55,7 +55,7 @@ class BaseReportBackend(object):
                 serialized_enrollments = [user_serializer.to_representation(user) for user in enrolled_users_page]
                 report_task = self.generate_report_data_task.delay(
                     extra_data=extra_data,
-                    course_key=unicode(course_key),
+                    course_key=str(course_key),
                     enrolled_users=self.clean_serialized_enrollment_data(serialized_enrollments),
                 )
 

@@ -11,12 +11,11 @@ from rest_framework import permissions, status
 from rest_framework.response import Response
 from rest_framework.reverse import reverse
 from rest_framework.views import APIView
-from rest_framework_oauth.authentication import OAuth2Authentication
 
+from openedx_proversity_reports.edxapp_wrapper.openedx_authentication import \
+    openedx_bearer_authentication
 from openedx_proversity_reports.edxapp_wrapper.get_edx_rest_framework_extensions import \
     get_jwt_authentication
-from openedx_proversity_reports.edxapp_wrapper.get_openedx_permissions import \
-    get_staff_or_owner
 from openedx_proversity_reports.serializers import GenerateReportViewSerializer
 from openedx_proversity_reports.utils import (
     get_attribute_from_module,
@@ -30,11 +29,9 @@ class GenerateReportView(APIView):
     """
     Select and Initialize the report backend to get the report data.
     """
-    authentication_classes = (
-        OAuth2Authentication,
-        get_jwt_authentication(),
-    )
-    permission_classes = (permissions.IsAuthenticated, get_staff_or_owner())
+
+    authentication_classes = (get_jwt_authentication(), openedx_bearer_authentication())
+    permission_classes = (permissions.IsAuthenticated, permissions.IsAdminUser)
 
     def post(self, request, report_name):
         """
@@ -45,7 +42,10 @@ class GenerateReportView(APIView):
         **Example Requests**:
             POST /proversity-reports/proversity-reports/api/v1/generate-<report-name>
         """
-        request_data = {item: value for item, value in (request.data.items() + request.query_params.items())}
+        request_data = dict(request.data.items())
+
+        request_data.update(request.query_params.items())
+
         serialized_data = GenerateReportViewSerializer(data=request_data)
 
         serialized_data.is_valid(raise_exception=True)
@@ -58,7 +58,7 @@ class GenerateReportView(APIView):
         backend_instance = report_backend(report_settings=report_backend_settings, **serialized_data.data)
         backend_response = backend_instance.process_request(
             request=request,
-            extra_data={key: value for key, value in request.data.items() if key not in serialized_data.data},
+            extra_data={key: value for key, value in request_data.items() if key not in serialized_data.data},
         )
 
         return JsonResponse(
@@ -72,11 +72,8 @@ class GetReportView(APIView):
     This class verifies the status for the given task id and returns the result.
     """
 
-    authentication_classes = (
-        OAuth2Authentication,
-        get_jwt_authentication(),
-    )
-    permission_classes = (permissions.IsAuthenticated, get_staff_or_owner())
+    authentication_classes = (get_jwt_authentication(), openedx_bearer_authentication())
+    permission_classes = (permissions.IsAuthenticated, permissions.IsAdminUser)
 
     def get(self, request):
         """

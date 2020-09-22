@@ -16,7 +16,6 @@ class OpenEdxProversityReportsConfig(AppConfig):
             'lms.djangoapp': {
                 'test': {'relative_path': 'settings.test'},
                 'common': {'relative_path': 'settings.common'},
-                'aws': {'relative_path': 'settings.aws'},
                 'production': {'relative_path': 'settings.production'},
             },
         },
@@ -32,6 +31,11 @@ class OpenEdxProversityReportsConfig(AppConfig):
     def ready(self):
         """
         The line below allows tasks defined in this app to be included by celery workers.
-        https://docs.djangoproject.com/en/1.8/ref/applications/#methods
+        https://docs.djangoproject.com/en/2.2/ref/applications/#django.apps.AppConfig.ready
+
+        Due to a presumed circular import, the tasks are imported individually instead of importing
+        all the definitions in .tasks file.
         """
-        from .tasks import *  # pylint: disable=unused-variable, wildcard-import
+        from .tasks import (
+            enrollment_per_site_report_task,
+        )

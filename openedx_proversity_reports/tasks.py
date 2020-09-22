@@ -258,7 +258,7 @@ def enrollment_per_site_report_task(*args, **kwargs):
         course_key=course_key,
         enrolled_users=kwargs.pop('enrolled_users', []),
     )
-    course_object = course_overview().get_from_id_if_exists(
+    course_object = course_overview().get_from_id(
         course_id=course_key,
     )
 
