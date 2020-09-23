@@ -13,11 +13,11 @@ from rest_framework.exceptions import ValidationError
 from rest_framework.response import Response
 from rest_framework.reverse import reverse
 from rest_framework.views import APIView
-from rest_framework_oauth.authentication import OAuth2Authentication
 
+from openedx_proversity_reports.edxapp_wrapper.openedx_authentication import \
+    openedx_bearer_authentication
 from openedx_proversity_reports.edxapp_wrapper.get_edx_rest_framework_extensions import \
     get_jwt_authentication
-from openedx_proversity_reports.edxapp_wrapper.get_openedx_permissions import get_staff_or_owner
 from openedx_proversity_reports.edxapp_wrapper.get_student_account_library import \
     get_user_salesforce_contact_id
 from openedx_proversity_reports.reports.activity_completion_report import GenerateCompletionReport
@@ -38,11 +38,8 @@ class GenerateReportView(APIView):
     This class allows to initialize a celery task in order to generate reports.
     """
 
-    authentication_classes = (
-        OAuth2Authentication,
-        get_jwt_authentication(),
-    )
-    permission_classes = (permissions.IsAuthenticated, get_staff_or_owner())
+    authentication_classes = (get_jwt_authentication(), openedx_bearer_authentication())
+    permission_classes = (permissions.IsAuthenticated, permissions.IsAdminUser)
 
     def post(self, request, report_name):
         """
@@ -112,11 +109,8 @@ class GetReportView(APIView):
     This class verifies the status for the given task id and returns the result.
     """
 
-    authentication_classes = (
-        OAuth2Authentication,
-        get_jwt_authentication(),
-    )
-    permission_classes = (permissions.IsAuthenticated, get_staff_or_owner())
+    authentication_classes = (get_jwt_authentication(), openedx_bearer_authentication())
+    permission_classes = (permissions.IsAuthenticated, permissions.IsAdminUser)
 
     def get(self, request):
         """
@@ -174,11 +168,8 @@ class SalesforceContactId(APIView):
     API class to interact with the UserSalesforceContactId model.
     """
     DEFAULT_CONTACT_ID_SOURCE = 'Salesforce'
-    authentication_classes = (
-        OAuth2Authentication,
-        get_jwt_authentication(),
-    )
-    permission_classes = (permissions.IsAuthenticated, get_staff_or_owner())
+    authentication_classes = (get_jwt_authentication(), openedx_bearer_authentication())
+    permission_classes = (permissions.IsAuthenticated, permissions.IsAdminUser)
 
     def post(self, request):
         """
@@ -254,11 +245,8 @@ class UserActivityCompletionView(APIView):
     This class is intended to return the activity completion data per user.
     """
 
-    authentication_classes = (
-        OAuth2Authentication,
-        get_jwt_authentication(),
-    )
-    permission_classes = (permissions.IsAuthenticated, get_staff_or_owner())
+    authentication_classes = (get_jwt_authentication(), openedx_bearer_authentication())
+    permission_classes = (permissions.IsAuthenticated, permissions.IsAdminUser)
 
     def post(self, request):
         """

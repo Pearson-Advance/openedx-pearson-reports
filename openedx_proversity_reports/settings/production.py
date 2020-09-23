@@ -58,11 +58,6 @@ def plugin_settings(settings):
         settings.OPR_MODULESTORE
     )
 
-    settings.OPR_OPENEDX_PERMISSIONS = getattr(settings, 'ENV_TOKENS', {}).get(
-        'OPR_OPENEDX_PERMISSIONS',
-        settings.OPR_OPENEDX_PERMISSIONS
-    )
-
     settings.OPR_STUDENT_ACCOUNT_LIBRARY = getattr(settings, 'ENV_TOKENS', {}).get(
         'OPR_STUDENT_ACCOUNT_LIBRARY',
         settings.OPR_STUDENT_ACCOUNT_LIBRARY
@@ -98,10 +93,11 @@ def plugin_settings(settings):
         settings.OPR_TIME_BETWEEN_SESSIONS
     )
 
-    if settings.SERVICE_VARIANT == "lms":
-        settings.MIDDLEWARE_CLASSES += [
-            'openedx_proversity_reports.middleware.UserSessionMiddleware',
-        ]
+    # Since the learning tracker report is not required for Juniper, this middleware has been disabled.
+    # if settings.SERVICE_VARIANT == "lms":
+    #     settings.MIDDLEWARE += [
+    #         'openedx_proversity_reports.middleware.UserSessionMiddleware',
+    #     ]
 
     settings.OPR_COURSE_DETAILS = getattr(settings, 'ENV_TOKENS', {}).get(
         'OPR_COURSE_DETAILS',
@@ -156,4 +152,9 @@ def plugin_settings(settings):
     settings.OPR_COURSE_CONTENT = getattr(settings, 'ENV_TOKENS', {}).get(
         'OPR_COURSE_CONTENT',
         settings.OPR_COURSE_CONTENT,
+    )
+
+    settings.OPR_OPENEDX_AUTHENTICATION = getattr(settings, 'ENV_TOKENS', {}).get(
+        'OPR_OPENEDX_AUTHENTICATION',
+        settings.OPR_OPENEDX_AUTHENTICATION,
     )

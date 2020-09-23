@@ -1,3 +1,3 @@
 """ Backend abstraction. """
 from lms.djangoapps.courseware.courses import get_course_by_id
-from courseware.models import StudentModule
+from lms.djangoapps.courseware.models import StudentModule
