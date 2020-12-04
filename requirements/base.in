@@ -9,4 +9,4 @@ edx-completion
 # These are the plugin requirements.
 # Add here any constraint needed to work with setup.py's `install_requires`.
 google-api-python-client
-google-cloud-bigquery
+google-cloud-bigquery==1.28.0

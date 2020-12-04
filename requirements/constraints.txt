@@ -13,3 +13,6 @@ Django<2.3
 
 # edx-platform version compatibility.
 djangorestframework==3.9.4
+
+# Python 3.5 compatibility.
+google-cloud-bigquery==1.28.0
