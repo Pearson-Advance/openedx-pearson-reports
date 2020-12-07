@@ -1,12 +1,12 @@
 """
-Middlewares for openedx-proversity-reports.
+Middlewares for openedx-pearson-reports.
 """
 import json
 from datetime import datetime, timedelta
 
 from django.conf import settings
-from openedx_proversity_reports.edxapp_wrapper.get_student_library import get_user_profile
-from openedx_proversity_reports.serializers import UserSessionSerializer
+from openedx_pearson_reports.edxapp_wrapper.get_student_library import get_user_profile
+from openedx_pearson_reports.serializers import UserSessionSerializer
 
 
 class UserSessionMiddleware(object):

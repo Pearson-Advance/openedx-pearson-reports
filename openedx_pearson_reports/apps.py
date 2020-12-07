@@ -1,15 +1,15 @@
 """
-File configuration for openedx-proversity-reports.
+File configuration for openedx-pearson-reports.
 """
 from django.apps import AppConfig
 
 
-class OpenEdxProversityReportsConfig(AppConfig):
+class OpenEdxPearsonReportsConfig(AppConfig):
     """
-    Plugin app configuration for openedx-proversity-reports
+    Plugin app configuration for openedx-pearson-reports.
     """
-    name = 'openedx_proversity_reports'
-    verbose_name = "Open edX Proversity additional reports plugin."
+    name = 'openedx_pearson_reports'
+    verbose_name = "Open edX Pearson additional reports plugin."
 
     plugin_app = {
         'settings_config': {
@@ -21,8 +21,8 @@ class OpenEdxProversityReportsConfig(AppConfig):
         },
         'url_config': {
             'lms.djangoapp': {
-                'namespace': 'proversity-reports',
-                'regex': r'^proversity-reports/',
+                'namespace': 'pearson-reports',
+                'regex': r'^pearson-reports/',
                 'relative_path': 'urls',
             },
         },

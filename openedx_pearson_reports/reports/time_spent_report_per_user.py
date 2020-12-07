@@ -9,10 +9,10 @@ from google.cloud import bigquery
 from google.cloud.bigquery.client import Client
 from google.oauth2 import service_account
 
-from openedx_proversity_reports.edxapp_wrapper.get_block_structure_library import get_course_in_cache
-from openedx_proversity_reports.edxapp_wrapper.get_course_cohort import get_course_cohort
-from openedx_proversity_reports.edxapp_wrapper.get_course_teams import get_course_teams
-from openedx_proversity_reports.edxapp_wrapper.get_modulestore import item_not_found_error
+from openedx_pearson_reports.edxapp_wrapper.get_block_structure_library import get_course_in_cache
+from openedx_pearson_reports.edxapp_wrapper.get_course_cohort import get_course_cohort
+from openedx_pearson_reports.edxapp_wrapper.get_course_teams import get_course_teams
+from openedx_pearson_reports.edxapp_wrapper.get_modulestore import item_not_found_error
 
 
 BIGQUERY_API_SCOPES = (

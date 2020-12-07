@@ -8,15 +8,15 @@ from django.core.exceptions import ObjectDoesNotExist
 from opaque_keys import InvalidKeyError
 from opaque_keys.edx.locator import BlockUsageLocator
 
-from openedx_proversity_reports.utils import get_required_activity_dict
-from openedx_proversity_reports.edxapp_wrapper.get_block_structure_library import get_course_in_cache
-from openedx_proversity_reports.edxapp_wrapper.get_completion_models import get_block_completion_model
-from openedx_proversity_reports.edxapp_wrapper.get_courseware_library import get_course_by_id
-from openedx_proversity_reports.edxapp_wrapper.get_modulestore import (
+from openedx_pearson_reports.utils import get_required_activity_dict
+from openedx_pearson_reports.edxapp_wrapper.get_block_structure_library import get_course_in_cache
+from openedx_pearson_reports.edxapp_wrapper.get_completion_models import get_block_completion_model
+from openedx_pearson_reports.edxapp_wrapper.get_courseware_library import get_course_by_id
+from openedx_pearson_reports.edxapp_wrapper.get_modulestore import (
     get_modulestore,
     item_not_found_error,
 )
-from openedx_proversity_reports.edxapp_wrapper.get_student_library import get_user
+from openedx_pearson_reports.edxapp_wrapper.get_student_library import get_user
 
 
 logger = logging.getLogger(__name__)

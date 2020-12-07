@@ -1,5 +1,5 @@
 """
-Task for Openedx Proversity Report plugin.
+Task for Openedx Pearson Report plugin.
 """
 import json
 from datetime import datetime
@@ -12,20 +12,20 @@ from opaque_keys import InvalidKeyError
 from opaque_keys.edx.keys import CourseKey
 from rest_framework import status
 
-from openedx_proversity_reports.edxapp_wrapper.get_course_content import course_overview
-from openedx_proversity_reports.reports.activity_completion_report import GenerateCompletionReport
-from openedx_proversity_reports.reports.backend.enrollment_per_site_report import generate_enrollment_per_site_report
-from openedx_proversity_reports.reports.enrollment_report import EnrollmentReport
-from openedx_proversity_reports.reports.last_page_accessed import (
+from openedx_pearson_reports.edxapp_wrapper.get_course_content import course_overview
+from openedx_pearson_reports.reports.activity_completion_report import GenerateCompletionReport
+from openedx_pearson_reports.reports.backend.enrollment_per_site_report import generate_enrollment_per_site_report
+from openedx_pearson_reports.reports.enrollment_report import EnrollmentReport
+from openedx_pearson_reports.reports.last_page_accessed import (
     get_exit_count_data,
     get_last_page_accessed_data,
 )
-from openedx_proversity_reports.reports.learning_tracker_report import LearningTrackerReport
-from openedx_proversity_reports.reports.last_login_report import LastLoginReport
-from openedx_proversity_reports.reports.time_spent_report import get_time_spent_report_data
-from openedx_proversity_reports.reports.time_spent_report_per_user import GenerateTimeSpentPerUserReport
-from openedx_proversity_reports.serializers import ActivityCompletionReportSerializer
-from openedx_proversity_reports.utils import (
+from openedx_pearson_reports.reports.learning_tracker_report import LearningTrackerReport
+from openedx_pearson_reports.reports.last_login_report import LastLoginReport
+from openedx_pearson_reports.reports.time_spent_report import get_time_spent_report_data
+from openedx_pearson_reports.reports.time_spent_report_per_user import GenerateTimeSpentPerUserReport
+from openedx_pearson_reports.serializers import ActivityCompletionReportSerializer
+from openedx_pearson_reports.utils import (
     generate_report_as_list,
     get_enrolled_users,
     get_root_block,

@@ -7,17 +7,17 @@ from django.conf import settings
 from opaque_keys.edx.keys import CourseKey
 from rest_framework import status
 
-from openedx_proversity_reports.google_services.bigquery_module import (
+from openedx_pearson_reports.google_services.bigquery_module import (
     get_google_bigquery_course_id,
     get_google_bigquery_data,
     GoogleBigQueryInformationError,
 )
-from openedx_proversity_reports.reports.backend.base import BaseReportBackend
-from openedx_proversity_reports.edxapp_wrapper.get_courseware_library import student_module
-from openedx_proversity_reports.edxapp_wrapper.get_student_library import user_attribute, user_signup_source
-from openedx_proversity_reports.utils import get_course_enrollment, get_user_role
+from openedx_pearson_reports.reports.backend.base import BaseReportBackend
+from openedx_pearson_reports.edxapp_wrapper.get_courseware_library import student_module
+from openedx_pearson_reports.edxapp_wrapper.get_student_library import user_attribute, user_signup_source
+from openedx_pearson_reports.utils import get_course_enrollment, get_user_role
 
-SUPPORTED_TASKS_MODULE = 'openedx_proversity_reports.tasks'
+SUPPORTED_TASKS_MODULE = 'openedx_pearson_reports.tasks'
 
 class EnrollmentReportPerSiteBackend(BaseReportBackend):
     """

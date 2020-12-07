@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
-Utils file for Openedx Proversity Reports.
+Utils file for Openedx Pearson Reports.
 """
 import copy
 import logging
@@ -10,13 +10,13 @@ from importlib import import_module
 from django.conf import settings
 from django.contrib.auth.models import User
 
-from openedx_proversity_reports.edxapp_wrapper.get_completion_models import get_block_completion_model
-from openedx_proversity_reports.edxapp_wrapper.get_course_blocks import get_course_blocks
-from openedx_proversity_reports.edxapp_wrapper.get_course_cohort import get_course_cohort
-from openedx_proversity_reports.edxapp_wrapper.get_course_teams import get_course_teams
-from openedx_proversity_reports.edxapp_wrapper.get_modulestore import get_modulestore
-from openedx_proversity_reports.edxapp_wrapper.get_student_library import course_access_role, get_course_enrollment
-from openedx_proversity_reports.edxapp_wrapper.get_supported_fields import get_supported_fields
+from openedx_pearson_reports.edxapp_wrapper.get_completion_models import get_block_completion_model
+from openedx_pearson_reports.edxapp_wrapper.get_course_blocks import get_course_blocks
+from openedx_pearson_reports.edxapp_wrapper.get_course_cohort import get_course_cohort
+from openedx_pearson_reports.edxapp_wrapper.get_course_teams import get_course_teams
+from openedx_pearson_reports.edxapp_wrapper.get_modulestore import get_modulestore
+from openedx_pearson_reports.edxapp_wrapper.get_student_library import course_access_role, get_course_enrollment
+from openedx_pearson_reports.edxapp_wrapper.get_supported_fields import get_supported_fields
 
 logger = logging.getLogger(__name__)
 

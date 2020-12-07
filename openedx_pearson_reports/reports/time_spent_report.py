@@ -10,8 +10,8 @@ from google.oauth2 import service_account
 from opaque_keys import InvalidKeyError
 from opaque_keys.edx.keys import CourseKey
 
-from openedx_proversity_reports.edxapp_wrapper.get_course_blocks import get_course_blocks
-from openedx_proversity_reports.edxapp_wrapper.get_modulestore import get_modulestore
+from openedx_pearson_reports.edxapp_wrapper.get_course_blocks import get_course_blocks
+from openedx_pearson_reports.edxapp_wrapper.get_modulestore import get_modulestore
 
 
 ANALYTICS_API_SCOPES = ['https://www.googleapis.com/auth/analytics.readonly']

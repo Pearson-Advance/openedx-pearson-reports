@@ -1,4 +1,4 @@
-# Open edX Proversity additional reports plugin.
+# Open edX Pearson additional reports plugin.
 
 ## Description
 

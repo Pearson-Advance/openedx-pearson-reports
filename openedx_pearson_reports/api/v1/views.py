@@ -1,5 +1,5 @@
 """
-This file contains the views for openedx-proversity-reports API V1.
+This file contains the views for openedx-pearson-reports API V1.
 """
 import json
 import logging
@@ -12,12 +12,14 @@ from rest_framework.response import Response
 from rest_framework.reverse import reverse
 from rest_framework.views import APIView
 
-from openedx_proversity_reports.edxapp_wrapper.openedx_authentication import \
-    openedx_bearer_authentication
-from openedx_proversity_reports.edxapp_wrapper.get_edx_rest_framework_extensions import \
-    get_jwt_authentication
-from openedx_proversity_reports.serializers import GenerateReportViewSerializer
-from openedx_proversity_reports.utils import (
+from openedx_pearson_reports.edxapp_wrapper.openedx_authentication import (
+    openedx_bearer_authentication,
+)
+from openedx_pearson_reports.edxapp_wrapper.get_edx_rest_framework_extensions import (
+    get_jwt_authentication,
+)
+from openedx_pearson_reports.serializers import GenerateReportViewSerializer
+from openedx_pearson_reports.utils import (
     get_attribute_from_module,
     get_report_backend,
 )
@@ -40,7 +42,7 @@ class GenerateReportView(APIView):
         **Params**
             course_ids: List of course ids. This parameter must contain at least one value.
         **Example Requests**:
-            POST /proversity-reports/proversity-reports/api/v1/generate-<report-name>
+            POST /pearson-reports/pearson-reports/api/v1/generate-<report-name>
         """
         request_data = dict(request.data.items())
 
@@ -82,7 +84,7 @@ class GetReportView(APIView):
         **Params**
             task_id: the identifier for the task
         **Example Requests**:
-            GET /proversity-reports/api/v0/get-report-data?task_id=<celery-uuid>/
+            GET /pearson-reports/api/v0/get-report-data?task_id=<celery-uuid>/
         **Response Values**:
             status: task status.
             result: the task result.

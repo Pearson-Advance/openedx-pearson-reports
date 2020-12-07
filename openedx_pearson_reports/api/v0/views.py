@@ -1,5 +1,5 @@
 """
-This file contains the views for openedx-proversity-reports.
+This file contains the views for openedx-pearson-reports.
 """
 import json
 import logging
@@ -14,15 +14,18 @@ from rest_framework.response import Response
 from rest_framework.reverse import reverse
 from rest_framework.views import APIView
 
-from openedx_proversity_reports.edxapp_wrapper.openedx_authentication import \
-    openedx_bearer_authentication
-from openedx_proversity_reports.edxapp_wrapper.get_edx_rest_framework_extensions import \
-    get_jwt_authentication
-from openedx_proversity_reports.edxapp_wrapper.get_student_account_library import \
-    get_user_salesforce_contact_id
-from openedx_proversity_reports.reports.activity_completion_report import GenerateCompletionReport
-from openedx_proversity_reports.serializers import SalesforceContactIdSerializer, ActivityCompletionReportSerializer
-from openedx_proversity_reports.utils import (
+from openedx_pearson_reports.edxapp_wrapper.openedx_authentication import (
+    openedx_bearer_authentication,
+)
+from openedx_pearson_reports.edxapp_wrapper.get_edx_rest_framework_extensions import (
+    get_jwt_authentication,
+)
+from openedx_pearson_reports.edxapp_wrapper.get_student_account_library import (
+    get_user_salesforce_contact_id,
+)
+from openedx_pearson_reports.reports.activity_completion_report import GenerateCompletionReport
+from openedx_pearson_reports.serializers import SalesforceContactIdSerializer, ActivityCompletionReportSerializer
+from openedx_pearson_reports.utils import (
     get_attribute_from_module,
     get_exisiting_users_by_email,
     get_user_course_enrollments,
@@ -30,7 +33,7 @@ from openedx_proversity_reports.utils import (
 
 logger = logging.getLogger(__name__)
 
-SUPPORTED_TASKS_MODULE = 'openedx_proversity_reports.tasks'
+SUPPORTED_TASKS_MODULE = 'openedx_pearson_reports.tasks'
 
 
 class GenerateReportView(APIView):
@@ -63,7 +66,7 @@ class GenerateReportView(APIView):
                     ]
             course_ids: List of course ids. This parameter must contain at least one value.
         **Example Requests**:
-            POST /proversity-reports/proversity-reports/api/v0/generate-<supported-report-name>
+            POST /pearson-reports/pearson-reports/api/v0/generate-<supported-report-name>
         **Response Values**:
             * success: If the task has been started correctly.
             * status_url: This url provides the status and result for the task.
@@ -93,7 +96,7 @@ class GenerateReportView(APIView):
             )
 
         task = task.delay(courses, **request.data)
-        state_url = request.build_absolute_uri(reverse('proversity-reports:api:v0:get-report-data'))
+        state_url = request.build_absolute_uri(reverse('pearson-reports:api:v0:get-report-data'))
 
         logger.info('The task with id = %s has been initialize.', task.id)
 
@@ -119,7 +122,7 @@ class GetReportView(APIView):
         **Params**
             task_id: the identifier for the task
         **Example Requests**:
-            GET /proversity-reports/api/v0/get-report-data?task_id=<celery-uuid>/
+            GET /pearson-reports/api/v0/get-report-data?task_id=<celery-uuid>/
         **Response Values**:
             status: task status.
             result: the task result.
@@ -193,7 +196,7 @@ class SalesforceContactId(APIView):
 
         **Example Requests**:
 
-            POST /proversity-reports/api/v0/salesforce-contact-id
+            POST /pearson-reports/api/v0/salesforce-contact-id
 
         **Response Values**:
 
@@ -272,7 +275,7 @@ class UserActivityCompletionView(APIView):
                 ]
             }
         **Example Requests**:
-            POST /proversity-reports/proversity-reports/api/v0/user-activity-completion-data
+            POST /pearson-reports/pearson-reports/api/v0/user-activity-completion-data
         **Response Values**:
             * result: Activity completion data per user.
 

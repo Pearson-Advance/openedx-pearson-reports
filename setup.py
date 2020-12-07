@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Setup file for openedx-proversity-reports Django plugin.
+Setup file for openedx-pearson-reports Django plugin.
 """
 from __future__ import absolute_import, print_function
 
@@ -14,7 +14,7 @@ def get_version():
     """
     Retrieves the version string from __init__.py.
     """
-    file_path = os.path.join('openedx_proversity_reports', '__init__.py')
+    file_path = os.path.join('openedx_pearson_reports', '__init__.py')
     initfile_lines = open(file_path, 'rt').readlines()
     version_regex = r"^__version__ = ['\"]([^'\"]*)['\"]"
     for line in initfile_lines:
@@ -58,16 +58,16 @@ def is_requirement(line):
 
 
 setup(
-    name='openedx-proversity-reports',
+    name='openedx-pearson-reports',
     version=get_version(),
-    description='Open edX Proversity additional reports plugin.',
-    author='Proversity',
-    author_email='info@proversity.org',
-    packages=['openedx_proversity_reports'],
+    description='Open edX Pearson additional reports plugin.',
+    author='eduNEXT',
+    author_email='contact@edunext.co',
+    packages=['openedx_pearson_reports'],
     zip_safe=False,
     entry_points={
         "lms.djangoapp": [
-            "openedx_proversity_reports = openedx_proversity_reports.apps:OpenEdxProversityReportsConfig"
+            "openedx_pearson_reports = openedx_pearson_reports.apps:OpenEdxPearsonReportsConfig"
         ],
     },
     include_package_data=True,

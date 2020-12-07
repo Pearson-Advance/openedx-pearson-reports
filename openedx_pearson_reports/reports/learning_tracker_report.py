@@ -10,20 +10,20 @@ from django.utils.functional import cached_property
 from opaque_keys import InvalidKeyError
 from opaque_keys.edx.keys import CourseKey
 
-from openedx_proversity_reports.edxapp_wrapper.get_block_structure_library import get_course_in_cache
-from openedx_proversity_reports.edxapp_wrapper.get_certificates_models import (
+from openedx_pearson_reports.edxapp_wrapper.get_block_structure_library import get_course_in_cache
+from openedx_pearson_reports.edxapp_wrapper.get_certificates_models import (
     get_certificate_statuses,
     get_certificate_status_for_student
 )
-from openedx_proversity_reports.edxapp_wrapper.get_course_cohort import get_course_cohort
-from openedx_proversity_reports.edxapp_wrapper.get_course_grade_library import (
+from openedx_pearson_reports.edxapp_wrapper.get_course_cohort import get_course_cohort
+from openedx_pearson_reports.edxapp_wrapper.get_course_grade_library import (
     get_course_grade_factory,
     get_grading_context
 )
-from openedx_proversity_reports.edxapp_wrapper.get_course_teams import get_course_teams
-from openedx_proversity_reports.edxapp_wrapper.get_courseware_library import get_course_by_id
-from openedx_proversity_reports.edxapp_wrapper.get_student_library import get_user_profile
-from openedx_proversity_reports.utils import get_enrolled_users
+from openedx_pearson_reports.edxapp_wrapper.get_course_teams import get_course_teams
+from openedx_pearson_reports.edxapp_wrapper.get_courseware_library import get_course_by_id
+from openedx_pearson_reports.edxapp_wrapper.get_student_library import get_user_profile
+from openedx_pearson_reports.utils import get_enrolled_users
 
 
 LOG = logging.getLogger(__name__)

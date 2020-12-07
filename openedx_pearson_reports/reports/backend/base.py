@@ -6,10 +6,10 @@ from django.conf import settings
 from rest_framework import status
 from rest_framework.reverse import reverse
 
-from openedx_proversity_reports.edxapp_wrapper.get_student_library import (
+from openedx_pearson_reports.edxapp_wrapper.get_student_library import (
     user_readonly_serializer,
 )
-from openedx_proversity_reports.utils import get_enrolled_users
+from openedx_pearson_reports.utils import get_enrolled_users
 
 
 class BaseReportBackend(object):
@@ -37,7 +37,7 @@ class BaseReportBackend(object):
         Returns:
             BaseReportBackend.process_response object.
         """
-        get_report_data_url = request.build_absolute_uri(reverse('proversity-reports:api:v1:get-report-data'))
+        get_report_data_url = request.build_absolute_uri(reverse('pearson-reports:api:v1:get-report-data'))
         course_report_pages = {}
 
         for course_key in self.course_keys:

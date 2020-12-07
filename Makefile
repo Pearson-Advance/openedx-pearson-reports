@@ -1,6 +1,6 @@
 ###############################################
 #
-# openedx-proversity-reports commands.
+# openedx-pearson-reports commands.
 #
 ###############################################
 
@@ -18,7 +18,7 @@ clean: ## delete most git-ignored files
 	find . -name '*.pyc' -exec rm -f {} +
 
 run-quality-test: clean ## Run quality test.
-	pylint ./openedx_proversity_reports --rcfile=./setup.cfg
+	pylint ./openedx_pearson_reports --rcfile=./setup.cfg
 
 requirements: ## install environment requirements
 	pip install -r requirements/base.txt
