@@ -1,6 +1,6 @@
 ###############################################
 #
-# openedx-proversity-reports commands.
+# openedx-pearson-reports commands.
 #
 ###############################################
 

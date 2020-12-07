@@ -1,5 +1,5 @@
 """
-Middlewares for openedx-proversity-reports.
+Middlewares for openedx-pearson-reports.
 """
 import json
 from datetime import datetime, timedelta

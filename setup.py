@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Setup file for openedx-proversity-reports Django plugin.
+Setup file for openedx-pearson-reports Django plugin.
 """
 from __future__ import absolute_import, print_function
 
@@ -58,7 +58,7 @@ def is_requirement(line):
 
 
 setup(
-    name='openedx-proversity-reports',
+    name='openedx-pearson-reports',
     version=get_version(),
     description='Open edX Proversity additional reports plugin.',
     author='Proversity',

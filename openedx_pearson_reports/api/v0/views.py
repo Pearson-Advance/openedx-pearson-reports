@@ -1,5 +1,5 @@
 """
-This file contains the views for openedx-proversity-reports.
+This file contains the views for openedx-pearson-reports.
 """
 import json
 import logging

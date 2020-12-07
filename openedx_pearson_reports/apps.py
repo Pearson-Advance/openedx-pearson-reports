@@ -1,12 +1,12 @@
 """
-File configuration for openedx-proversity-reports.
+File configuration for openedx-pearson-reports.
 """
 from django.apps import AppConfig
 
 
 class OpenEdxProversityReportsConfig(AppConfig):
     """
-    Plugin app configuration for openedx-proversity-reports
+    Plugin app configuration for openedx-pearson-reports
     """
     name = 'openedx_proversity_reports'
     verbose_name = "Open edX Proversity additional reports plugin."

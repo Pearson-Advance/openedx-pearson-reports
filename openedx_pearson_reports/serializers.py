@@ -1,5 +1,5 @@
 """
-Serializers for openedx-proversity-reports.
+Serializers for openedx-pearson-reports.
 """
 from django.conf import settings
 from opaque_keys import InvalidKeyError
