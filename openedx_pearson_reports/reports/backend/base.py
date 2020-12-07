@@ -6,10 +6,10 @@ from django.conf import settings
 from rest_framework import status
 from rest_framework.reverse import reverse
 
-from openedx_proversity_reports.edxapp_wrapper.get_student_library import (
+from openedx_pearson_reports.edxapp_wrapper.get_student_library import (
     user_readonly_serializer,
 )
-from openedx_proversity_reports.utils import get_enrolled_users
+from openedx_pearson_reports.utils import get_enrolled_users
 
 
 class BaseReportBackend(object):

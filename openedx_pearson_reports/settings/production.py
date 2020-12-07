@@ -1,5 +1,5 @@
 """
-Production settings for openedx_proversity_reports project.
+Production settings for openedx_pearson_reports project.
 """
 
 
@@ -96,7 +96,7 @@ def plugin_settings(settings):
     # Since the learning tracker report is not required for Juniper, this middleware has been disabled.
     # if settings.SERVICE_VARIANT == "lms":
     #     settings.MIDDLEWARE += [
-    #         'openedx_proversity_reports.middleware.UserSessionMiddleware',
+    #         'openedx_pearson_reports.middleware.UserSessionMiddleware',
     #     ]
 
     settings.OPR_COURSE_DETAILS = getattr(settings, 'ENV_TOKENS', {}).get(

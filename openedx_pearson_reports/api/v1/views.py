@@ -12,12 +12,12 @@ from rest_framework.response import Response
 from rest_framework.reverse import reverse
 from rest_framework.views import APIView
 
-from openedx_proversity_reports.edxapp_wrapper.openedx_authentication import \
+from openedx_pearson_reports.edxapp_wrapper.openedx_authentication import \
     openedx_bearer_authentication
-from openedx_proversity_reports.edxapp_wrapper.get_edx_rest_framework_extensions import \
+from openedx_pearson_reports.edxapp_wrapper.get_edx_rest_framework_extensions import \
     get_jwt_authentication
-from openedx_proversity_reports.serializers import GenerateReportViewSerializer
-from openedx_proversity_reports.utils import (
+from openedx_pearson_reports.serializers import GenerateReportViewSerializer
+from openedx_pearson_reports.utils import (
     get_attribute_from_module,
     get_report_backend,
 )

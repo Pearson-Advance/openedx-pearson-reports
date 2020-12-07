@@ -14,7 +14,7 @@ def get_version():
     """
     Retrieves the version string from __init__.py.
     """
-    file_path = os.path.join('openedx_proversity_reports', '__init__.py')
+    file_path = os.path.join('openedx_pearson_reports', '__init__.py')
     initfile_lines = open(file_path, 'rt').readlines()
     version_regex = r"^__version__ = ['\"]([^'\"]*)['\"]"
     for line in initfile_lines:
@@ -63,11 +63,11 @@ setup(
     description='Open edX Proversity additional reports plugin.',
     author='Proversity',
     author_email='info@proversity.org',
-    packages=['openedx_proversity_reports'],
+    packages=['openedx_pearson_reports'],
     zip_safe=False,
     entry_points={
         "lms.djangoapp": [
-            "openedx_proversity_reports = openedx_proversity_reports.apps:OpenEdxProversityReportsConfig"
+            "openedx_pearson_reports = openedx_pearson_reports.apps:OpenEdxProversityReportsConfig"
         ],
     },
     include_package_data=True,

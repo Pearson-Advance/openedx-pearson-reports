@@ -5,11 +5,11 @@ from django.contrib.auth.models import User
 from opaque_keys import InvalidKeyError
 from opaque_keys.edx.keys import CourseKey
 
-from openedx_proversity_reports.edxapp_wrapper.get_completion_models import get_block_completion_model
-from openedx_proversity_reports.edxapp_wrapper.get_course_blocks import get_course_blocks
-from openedx_proversity_reports.edxapp_wrapper.get_course_cohort import get_course_cohort
-from openedx_proversity_reports.edxapp_wrapper.get_course_teams import get_course_teams
-from openedx_proversity_reports.edxapp_wrapper.get_modulestore import get_modulestore
+from openedx_pearson_reports.edxapp_wrapper.get_completion_models import get_block_completion_model
+from openedx_pearson_reports.edxapp_wrapper.get_course_blocks import get_course_blocks
+from openedx_pearson_reports.edxapp_wrapper.get_course_cohort import get_course_cohort
+from openedx_pearson_reports.edxapp_wrapper.get_course_teams import get_course_teams
+from openedx_pearson_reports.edxapp_wrapper.get_modulestore import get_modulestore
 
 
 def get_last_page_accessed_data(course_list):

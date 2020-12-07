@@ -8,7 +8,7 @@ class OpenEdxProversityReportsConfig(AppConfig):
     """
     Plugin app configuration for openedx-pearson-reports
     """
-    name = 'openedx_proversity_reports'
+    name = 'openedx_pearson_reports'
     verbose_name = "Open edX Proversity additional reports plugin."
 
     plugin_app = {

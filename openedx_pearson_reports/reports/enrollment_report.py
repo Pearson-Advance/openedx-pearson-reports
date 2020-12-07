@@ -6,11 +6,11 @@ import logging
 from opaque_keys import InvalidKeyError
 from opaque_keys.edx.keys import CourseKey
 
-from openedx_proversity_reports.serializers import EnrollmentReportSerializer
-from openedx_proversity_reports.edxapp_wrapper.get_course_details import get_course_details
-from openedx_proversity_reports.edxapp_wrapper.get_student_account_library import \
+from openedx_pearson_reports.serializers import EnrollmentReportSerializer
+from openedx_pearson_reports.edxapp_wrapper.get_course_details import get_course_details
+from openedx_pearson_reports.edxapp_wrapper.get_student_account_library import \
     get_user_salesforce_contact_id
-from openedx_proversity_reports.edxapp_wrapper.get_student_library import (
+from openedx_pearson_reports.edxapp_wrapper.get_student_library import (
     get_course_enrollment,
     get_user_profile,
 )

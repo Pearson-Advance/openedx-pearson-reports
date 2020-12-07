@@ -7,6 +7,6 @@ from django.conf.urls import include, url
 urlpatterns = [  # pylint: disable=invalid-name
     url(
         r'api/',
-        include('openedx_proversity_reports.api.urls', namespace='api'),
+        include('openedx_pearson_reports.api.urls', namespace='api'),
     ),
 ]

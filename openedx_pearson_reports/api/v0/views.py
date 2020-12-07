@@ -14,15 +14,15 @@ from rest_framework.response import Response
 from rest_framework.reverse import reverse
 from rest_framework.views import APIView
 
-from openedx_proversity_reports.edxapp_wrapper.openedx_authentication import \
+from openedx_pearson_reports.edxapp_wrapper.openedx_authentication import \
     openedx_bearer_authentication
-from openedx_proversity_reports.edxapp_wrapper.get_edx_rest_framework_extensions import \
+from openedx_pearson_reports.edxapp_wrapper.get_edx_rest_framework_extensions import \
     get_jwt_authentication
-from openedx_proversity_reports.edxapp_wrapper.get_student_account_library import \
+from openedx_pearson_reports.edxapp_wrapper.get_student_account_library import \
     get_user_salesforce_contact_id
-from openedx_proversity_reports.reports.activity_completion_report import GenerateCompletionReport
-from openedx_proversity_reports.serializers import SalesforceContactIdSerializer, ActivityCompletionReportSerializer
-from openedx_proversity_reports.utils import (
+from openedx_pearson_reports.reports.activity_completion_report import GenerateCompletionReport
+from openedx_pearson_reports.serializers import SalesforceContactIdSerializer, ActivityCompletionReportSerializer
+from openedx_pearson_reports.utils import (
     get_attribute_from_module,
     get_exisiting_users_by_email,
     get_user_course_enrollments,
@@ -30,7 +30,7 @@ from openedx_proversity_reports.utils import (
 
 logger = logging.getLogger(__name__)
 
-SUPPORTED_TASKS_MODULE = 'openedx_proversity_reports.tasks'
+SUPPORTED_TASKS_MODULE = 'openedx_pearson_reports.tasks'
 
 
 class GenerateReportView(APIView):

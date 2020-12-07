@@ -6,7 +6,7 @@ import logging
 from opaque_keys import InvalidKeyError
 from opaque_keys.edx.keys import CourseKey
 
-from openedx_proversity_reports.edxapp_wrapper.get_student_library import get_course_enrollment
+from openedx_pearson_reports.edxapp_wrapper.get_student_library import get_course_enrollment
 
 
 LOG = logging.getLogger(__name__)

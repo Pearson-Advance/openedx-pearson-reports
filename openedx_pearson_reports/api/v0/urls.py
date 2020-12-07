@@ -1,5 +1,5 @@
 """
-openedx_proversity_reports  API URL Configuration
+openedx_pearson_reports  API URL Configuration
 """
 from django.conf.urls import url
 
