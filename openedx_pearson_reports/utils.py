@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
-Utils file for Openedx Proversity Reports.
+Utils file for Openedx Pearson Reports.
 """
 import copy
 import logging

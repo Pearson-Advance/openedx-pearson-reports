@@ -1,5 +1,5 @@
 """
-Openedx Proversity Reports URL configuration.
+Openedx Pearson Reports URL configuration.
 """
 from django.conf.urls import include, url
 

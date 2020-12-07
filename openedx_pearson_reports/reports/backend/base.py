@@ -37,7 +37,7 @@ class BaseReportBackend(object):
         Returns:
             BaseReportBackend.process_response object.
         """
-        get_report_data_url = request.build_absolute_uri(reverse('proversity-reports:api:v1:get-report-data'))
+        get_report_data_url = request.build_absolute_uri(reverse('pearson-reports:api:v1:get-report-data'))
         course_report_pages = {}
 
         for course_key in self.course_keys:

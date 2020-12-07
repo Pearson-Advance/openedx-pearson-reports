@@ -1,5 +1,5 @@
 """
-OpenedX Proversity custom reports V1 API URL configuration.
+OpenedX Pearson custom reports V1 API URL configuration.
 """
 from django.conf.urls import url
 

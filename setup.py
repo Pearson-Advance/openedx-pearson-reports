@@ -60,14 +60,14 @@ def is_requirement(line):
 setup(
     name='openedx-pearson-reports',
     version=get_version(),
-    description='Open edX Proversity additional reports plugin.',
-    author='Proversity',
-    author_email='info@proversity.org',
+    description='Open edX Pearson additional reports plugin.',
+    author='eduNEXT',
+    author_email='contact@edunext.co',
     packages=['openedx_pearson_reports'],
     zip_safe=False,
     entry_points={
         "lms.djangoapp": [
-            "openedx_pearson_reports = openedx_pearson_reports.apps:OpenEdxProversityReportsConfig"
+            "openedx_pearson_reports = openedx_pearson_reports.apps:OpenEdxPearsonReportsConfig"
         ],
     },
     include_package_data=True,

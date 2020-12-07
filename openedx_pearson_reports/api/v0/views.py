@@ -63,7 +63,7 @@ class GenerateReportView(APIView):
                     ]
             course_ids: List of course ids. This parameter must contain at least one value.
         **Example Requests**:
-            POST /proversity-reports/proversity-reports/api/v0/generate-<supported-report-name>
+            POST /pearson-reports/pearson-reports/api/v0/generate-<supported-report-name>
         **Response Values**:
             * success: If the task has been started correctly.
             * status_url: This url provides the status and result for the task.
@@ -93,7 +93,7 @@ class GenerateReportView(APIView):
             )
 
         task = task.delay(courses, **request.data)
-        state_url = request.build_absolute_uri(reverse('proversity-reports:api:v0:get-report-data'))
+        state_url = request.build_absolute_uri(reverse('pearson-reports:api:v0:get-report-data'))
 
         logger.info('The task with id = %s has been initialize.', task.id)
 
@@ -119,7 +119,7 @@ class GetReportView(APIView):
         **Params**
             task_id: the identifier for the task
         **Example Requests**:
-            GET /proversity-reports/api/v0/get-report-data?task_id=<celery-uuid>/
+            GET /pearson-reports/api/v0/get-report-data?task_id=<celery-uuid>/
         **Response Values**:
             status: task status.
             result: the task result.
@@ -193,7 +193,7 @@ class SalesforceContactId(APIView):
 
         **Example Requests**:
 
-            POST /proversity-reports/api/v0/salesforce-contact-id
+            POST /pearson-reports/api/v0/salesforce-contact-id
 
         **Response Values**:
 
@@ -272,7 +272,7 @@ class UserActivityCompletionView(APIView):
                 ]
             }
         **Example Requests**:
-            POST /proversity-reports/proversity-reports/api/v0/user-activity-completion-data
+            POST /pearson-reports/pearson-reports/api/v0/user-activity-completion-data
         **Response Values**:
             * result: Activity completion data per user.
 

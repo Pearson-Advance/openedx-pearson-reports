@@ -1,5 +1,5 @@
 """
-Task for Openedx Proversity Report plugin.
+Task for Openedx Pearson Report plugin.
 """
 import json
 from datetime import datetime

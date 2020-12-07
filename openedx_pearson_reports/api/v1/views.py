@@ -40,7 +40,7 @@ class GenerateReportView(APIView):
         **Params**
             course_ids: List of course ids. This parameter must contain at least one value.
         **Example Requests**:
-            POST /proversity-reports/proversity-reports/api/v1/generate-<report-name>
+            POST /pearson-reports/pearson-reports/api/v1/generate-<report-name>
         """
         request_data = dict(request.data.items())
 
@@ -82,7 +82,7 @@ class GetReportView(APIView):
         **Params**
             task_id: the identifier for the task
         **Example Requests**:
-            GET /proversity-reports/api/v0/get-report-data?task_id=<celery-uuid>/
+            GET /pearson-reports/api/v0/get-report-data?task_id=<celery-uuid>/
         **Response Values**:
             status: task status.
             result: the task result.
