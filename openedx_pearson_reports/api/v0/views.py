@@ -14,12 +14,15 @@ from rest_framework.response import Response
 from rest_framework.reverse import reverse
 from rest_framework.views import APIView
 
-from openedx_pearson_reports.edxapp_wrapper.openedx_authentication import \
-    openedx_bearer_authentication
-from openedx_pearson_reports.edxapp_wrapper.get_edx_rest_framework_extensions import \
-    get_jwt_authentication
-from openedx_pearson_reports.edxapp_wrapper.get_student_account_library import \
-    get_user_salesforce_contact_id
+from openedx_pearson_reports.edxapp_wrapper.openedx_authentication import (
+    openedx_bearer_authentication,
+)
+from openedx_pearson_reports.edxapp_wrapper.get_edx_rest_framework_extensions import (
+    get_jwt_authentication,
+)
+from openedx_pearson_reports.edxapp_wrapper.get_student_account_library import (
+    get_user_salesforce_contact_id,
+)
 from openedx_pearson_reports.reports.activity_completion_report import GenerateCompletionReport
 from openedx_pearson_reports.serializers import SalesforceContactIdSerializer, ActivityCompletionReportSerializer
 from openedx_pearson_reports.utils import (

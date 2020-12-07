@@ -6,7 +6,7 @@ from django.apps import AppConfig
 
 class OpenEdxPearsonReportsConfig(AppConfig):
     """
-    Plugin app configuration for openedx-pearson-reports
+    Plugin app configuration for openedx-pearson-reports.
     """
     name = 'openedx_pearson_reports'
     verbose_name = "Open edX Pearson additional reports plugin."
