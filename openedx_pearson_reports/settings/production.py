@@ -68,9 +68,9 @@ def plugin_settings(settings):
         settings.OPR_STUDENT_LIBRARY
     )
 
-    settings.OPR_SUPPORTED_FIELDS = getattr(settings, 'ENV_TOKENS', {}).get(
-        'OPR_SUPPORTED_FIELDS',
-        settings.OPR_SUPPORTED_FIELDS
+    settings.OPR_COURSE_API = getattr(settings, 'ENV_TOKENS', {}).get(
+        'OPR_COURSE_API',
+        settings.OPR_COURSE_API,
     )
 
     settings.OPR_SUPPORTED_TASKS = getattr(settings, 'ENV_TOKENS', {}).get(

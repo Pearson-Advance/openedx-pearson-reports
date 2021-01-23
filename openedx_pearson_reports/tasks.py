@@ -15,6 +15,7 @@ from rest_framework import status
 from openedx_pearson_reports.edxapp_wrapper.get_course_content import course_overview
 from openedx_pearson_reports.reports.activity_completion_report import GenerateCompletionReport
 from openedx_pearson_reports.reports.backend.enrollment_per_site_report import generate_enrollment_per_site_report
+from openedx_pearson_reports.reports.completion_report import generate_completion_report
 from openedx_pearson_reports.reports.enrollment_report import EnrollmentReport
 from openedx_pearson_reports.reports.last_page_accessed import (
     get_exit_count_data,
@@ -25,46 +26,42 @@ from openedx_pearson_reports.reports.last_login_report import LastLoginReport
 from openedx_pearson_reports.reports.time_spent_report import get_time_spent_report_data
 from openedx_pearson_reports.reports.time_spent_report_per_user import GenerateTimeSpentPerUserReport
 from openedx_pearson_reports.serializers import ActivityCompletionReportSerializer
-from openedx_pearson_reports.utils import (
-    generate_report_as_list,
-    get_enrolled_users,
-    get_root_block,
-)
-
-BLOCK_DEFAULT_REPORT_FILTER = ['vertical']
+from openedx_pearson_reports.utils import get_enrolled_users
 
 
 @task(default_retry_delay=5, max_retries=5)  # pylint: disable=not-callable
-def generate_completion_report(courses, *args, **kwargs):
+def generate_completion_report_task(*args, **kwargs):
     """
-    Return the completion data for the given courses
+    Return the completion report data.
+
+    kwargs:
+        course_key: Course id string.
+        enrolled_users: List of the enrolled users in the course.
+        extra_data: Contains extra data passed from the report backend.
+    Returns:
+        List of users containing: {
+            cohort: User cohort name.
+            block-type: {
+                name: Display name of the block.
+                section_name: Display name of the section.
+                subsection_name: Display name of the subsection.
+                subsection_number: Subsection place value.
+                number: Block place value.
+                complete: Completion value, true or false.
+                section_number: Section place value.
+            }
+            team: User team name.
+            user_id: User id value.
+            username: Username value.
+        }
     """
-    block_report_filter = kwargs.get('block_report_filter', BLOCK_DEFAULT_REPORT_FILTER)
-    data = {}
+    block_report_filter = kwargs.pop('extra_data', {}).get('block_report_filter', [])
 
-    for course_id in courses:
-        try:
-            course_key = CourseKey.from_string(course_id)
-        except InvalidKeyError:
-            continue
-
-        # Getting all users enrolled in the course.
-        enrolled_users = User.objects.filter(
-            courseenrollment__course_id=course_key,
-            courseenrollment__is_active=1,
-            courseaccessrole__id=None,
-            is_staff=0,
-        )
-
-        if not enrolled_users:
-            break
-
-        block_root = get_root_block(enrolled_users.first(), course_key)
-        course_data = generate_report_as_list(enrolled_users, course_key, block_report_filter, block_root)
-
-        data[course_id] = course_data
-
-    return data
+    return generate_completion_report(
+        course_key=CourseKey.from_string(kwargs.get('course_key', '')),
+        enrolled_users=kwargs.pop('enrolled_users', []),
+        block_report_filter=block_report_filter,
+    )
 
 
 @task(default_retry_delay=5, max_retries=5)  # pylint: disable=not-callable
