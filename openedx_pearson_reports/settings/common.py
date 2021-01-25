@@ -42,7 +42,7 @@ def plugin_settings(settings):
     # pylint: disable=line-too-long
     settings.OPR_BLOCK_STRUCTURE_LIBRARY = 'openedx_pearson_reports.edxapp_wrapper.backends.block_structure_i_v1'
     settings.OPR_CERTIFICATES_MODELS = 'openedx_pearson_reports.edxapp_wrapper.backends.certificates_models_i_v1'
-    settings.OPR_COMPLETION_MODELS = 'openedx_pearson_reports.edxapp_wrapper.backends.completion_models_i_v1'
+    settings.OPR_COMPLETION_MODELS = 'openedx_pearson_reports.edxapp_wrapper.backends.completion_models_j_v1'
     settings.OPR_COURSE_BLOCKS = 'openedx_pearson_reports.edxapp_wrapper.backends.course_blocks_i_v1'
     settings.OPR_COURSE_COHORT = 'openedx_pearson_reports.edxapp_wrapper.backends.course_cohort_i_v1'
     settings.OPR_COURSE_GRADE_LIBRARY = 'openedx_pearson_reports.edxapp_wrapper.backends.course_grade_i_v1'
@@ -52,12 +52,11 @@ def plugin_settings(settings):
     settings.OPR_MODULESTORE = 'openedx_pearson_reports.edxapp_wrapper.backends.modulestore_i_v1'
     settings.OPR_STUDENT_ACCOUNT_LIBRARY = 'openedx_pearson_reports.edxapp_wrapper.backends.student_account_g_v1'
     settings.OPR_STUDENT_LIBRARY = 'openedx_pearson_reports.edxapp_wrapper.backends.student_i_v1'
-    settings.OPR_SUPPORTED_FIELDS = 'openedx_pearson_reports.edxapp_wrapper.backends.supported_fields_i_v1'
+    settings.OPR_COURSE_API = 'openedx_pearson_reports.edxapp_wrapper.backends.course_api_j_v1'
     settings.OPR_GOOGLE_ANALYTICS_CREDENTIALS = {}
     settings.OPR_GOOGLE_ANALYTICS_VIEW_ID = ''
     settings.OPR_COURSEWARE_LIBRARY = 'openedx_pearson_reports.edxapp_wrapper.backends.courseware_i_v1'
     settings.OPR_SUPPORTED_TASKS = [
-        'generate_completion_report',
         'generate_last_page-accessed_report',
         'generate_time_spent_report',
         'generate_learning_tracker_report',
@@ -77,8 +76,12 @@ def plugin_settings(settings):
     settings.OPR_SUPPORTED_REPORTS_BACKENDS = {
         'generate_enrollment_per_site_report': {
             'backend': 'openedx_pearson_reports.reports.backend.enrollment_per_site_report:EnrollmentReportPerSiteBackend',
-            'max_results_per_page': 10
-        }
+            'max_results_per_page': 10,
+        },
+        'generate_completion_report': {
+            'backend': 'openedx_pearson_reports.reports.completion_report:CompletionReportBackend',
+            'max_results_per_page': 5,
+        },
     }
     settings.OPR_DEFAULT_PAGE_RESULTS_LIMIT = 10
     settings.OPR_COURSE_CONTENT = 'openedx_pearson_reports.edxapp_wrapper.backends.course_content_i_v1'

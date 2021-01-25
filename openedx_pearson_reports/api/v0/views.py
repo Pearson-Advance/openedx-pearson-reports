@@ -75,7 +75,7 @@ class GenerateReportView(APIView):
         report_name = report_name.replace('-', '_')
         task = get_attribute_from_module(SUPPORTED_TASKS_MODULE, report_name)
 
-        if not (report_name in settings.OPR_SUPPORTED_TASKS or task):
+        if not (report_name in settings.OPR_SUPPORTED_TASKS and task):
             raise Http404
 
         courses = request.data.get("course_ids", [])
