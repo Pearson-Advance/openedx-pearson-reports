@@ -255,7 +255,7 @@ def mark_blocks_completed(block, user, course_key):
 
     if last_completed_child_position:
         recurse_mark_complete(
-            course_block_completions=get_block_completion_model().get_course_completions(user, course_key),
+            course_block_completions=get_block_completion_model().get_learning_context_completions(user, course_key),
             latest_completion=last_completed_child_position,
             block=block
         )

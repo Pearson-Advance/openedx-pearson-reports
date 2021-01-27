@@ -109,15 +109,13 @@ class GetReportView(APIView):
             response_data['data']['result'] = task.result
         elif task.failed():
             logger.info(
-                "The task with id = %s has been finalized with the following error %s.",
+                "The task with id = %s has been finalized with the following error: %s.",
                 task.id,
                 task.info,
             )
 
-            try:
-                response_data = json.loads(task.result)
-            except ValueError:
-                response_data['status'] = status.HTTP_500_INTERNAL_SERVER_ERROR
+            response_data['data']['result'] = str(task.info)
+            response_data['status'] = status.HTTP_500_INTERNAL_SERVER_ERROR
 
         try:
             return JsonResponse(**response_data)
